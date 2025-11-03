@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Playlist | Edgar Linda Denosta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* 🌙 Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0f14, #2a0f1d, #3b0f26);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            color: #fff;
+            padding-top: 50px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ✨ Universal Box Style */
+        .box {
+            background: rgba(40, 20, 35, 0.9);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.2);
+            width: 380px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 1.2s ease;
+            color: #ffc0cb;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: #ff7fbf;
+            margin-bottom: 20px;
+        }
+
+        /* 🎵 Song Bars */
+        .song-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            border-radius: 10px;
+            margin: 12px 0;
+            padding: 12px;
+            color: #ffc0cb;
+            transition: 0.3s ease;
+        }
+
+        .song-bar:hover {
+            background: rgba(255, 105, 180, 0.15);
+            transform: scale(1.02);
+        }
+
+        audio {
+            width: 100%;
+            height: 25px;
+            margin-top: 5px;
+            filter: hue-rotate(310deg) brightness(1.1);
+        }
+
+        /* 🎀 Top Section (2 Boxes) */
+        .top-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        /* 💌 Buttons and Inputs */
+        button {
+            width: 100%;
+            padding: 12px 0;
+            background: linear-gradient(135deg, #ff4fa1, #ff85c1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff85c1, #ffb6c1);
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        label {
+            color: #ffc0cb;
+            font-size: 0.9rem;
+        }
+
+        /* ⚜️ Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255, 182, 193, 0.8);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 900px) {
+            body {
+                padding-top: 20px;
+            }
+
+            .box {
+                width: 90%;
+            }
+
+            .top-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌸 Top Row -->
+    <div class="top-row">
+        <!-- 💌 Left Box -->
+        <div class="box">
+            <h2>Major Reminder 💌</h2>
+            <button onclick="showRandomMessage()">Click Me</button>
+            <p id="hiddenMessage" style="margin-top:15px; min-height: 40px;"></p>
+        </div>
+
+        <!-- 🔐 Right Box -->
+        <div class="box">
+            <h2>Unlock the Next Page 🔓</h2>
+            <label>Hint: It's the user's birthday 🎂</label>
+            <input type="password" id="passcode" placeholder="Enter passcode" />
+            <button onclick="checkPasscode()">Enter</button>
+        </div>
+    </div>
+
+    <!-- 🎶 Bottom Playlist Box -->
+    <div class="box">
+        <h1>Songs that Longs for u 🎶</h1>
+
+        <div class="song-bar">
+            <span>💗 Parokya Ni Edgar - Para Sa'yo</span>
+            <audio controls>
+                <source src="parokya.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="song-bar">
+            <span>💞 NIKI - La La Lost You</span>
+            <audio controls>
+                <source src="niki.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="song-bar">
+            <span>💖 Co-Pilot - Just Hush (featuring J.O.L.O. & Rjay Ty)</span>
+            <audio controls>
+                <source src="pilot.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <footer>11 - Socrates Edgar Linda Denosta</footer>
+
+    <script>
+        // 🎧 Only one song plays at a time
+        const audios = document.querySelectorAll("audio");
+        audios.forEach(audio => {
+            audio.addEventListener("play", () => {
+                audios.forEach(other => {
+                    if (other !== audio) other.pause();
+                });
+            });
+        });
+
+        // 💌 Random Message System
+        const messages = [
+         "Stop drinking sting na, that's not good for your health. 💖",
+            "Wag kang magpapalipas ng gutom and kumain sa tamang oras okay? 💫",
+            "don't ever forget to rest, don't push yourself too hard okay? 💞",
+            "You always make my day so much special 🌙",
+            "I'm always here everytime you need me 💗"
+        ];
+
+        function showRandomMessage() {
+            const msgBox = document.getElementById("hiddenMessage");
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            msgBox.textContent = messages[randomIndex];
+        }
+
+        // 🔐 Passcode check
+        function checkPasscode() {
+            const correctPass = "102109"; // change this to your real passcode
+            const entered = document.getElementById("passcode").value;
+            if (entered === correctPass) {
+                window.location.href = "hiddenmessage.html"; // replace with your target page
+            } else {
+                alert("Incorrect passcode. Try again!");
+            }
+        }
+    </script>
+</body>
+</html>
